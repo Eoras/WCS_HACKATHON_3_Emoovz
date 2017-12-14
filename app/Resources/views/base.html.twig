@@ -11,11 +11,12 @@
     </head>
     <body>
     <div class="container-fluid">
-        {% block menu %}
-            {% if moveOut.id is defined %}
-            {{ render(controller('AppBundle:Menu:userRoom', {'id':moveOut})) }}
-        {% endif %}
-        {% endblock %}
+
+            {% if app.session.get('moveOut') %}
+                {{ render(controller('AppBundle:Menu:userRoom',
+                    { 'id': app.session.get('moveOut').id }
+                    )) }}
+            {% endif %}
 
         {% block body %}
             <p>Pas de texte</p>

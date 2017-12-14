@@ -6,6 +6,8 @@ use AppBundle\Entity\MoveOut;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Moveout controller.
@@ -37,7 +39,7 @@ class MoveOutController extends Controller
      * @Route("/new", name="moveout_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, SessionInterface $session)
     {
         $moveOut = new Moveout();
         $form = $this->createForm('AppBundle\Form\MoveOutType', $moveOut);
@@ -47,6 +49,8 @@ class MoveOutController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($moveOut);
             $em->flush();
+
+            $session->set('moveOut', $moveOut);
 
             return $this->redirectToRoute('moveout_show', array('id' => $moveOut->getId()));
         }

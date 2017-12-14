@@ -1,18 +1,12 @@
-{% extends 'base.html.twig' %}
-
-{% block menu %}
-
-    <div class="jumbotron">
-        <h1 class="panel-title text-center"></h1>
-    </div>
-    <div class="menu">
-        <ul>
-            {% for menuRoom in menuRooms %}
-                <li class="thumbnail thumbnail2">
-                    {{ menuRoom.name }}
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-
-{% endblock %}
+<div class="jumbotron">
+    <h1 class="panel-title text-center">SALUT JE SUIS CONNECTÉ</h1>
+</div>
+<div class="menu">
+    <ul>
+        {% for menuRoom in menuRooms %}
+            <li class="thumbnail thumbnail2">
+                {{ menuRoom.name }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
