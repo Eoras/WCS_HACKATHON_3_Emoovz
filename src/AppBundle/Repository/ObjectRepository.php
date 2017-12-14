@@ -12,14 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class ObjectRepository extends EntityRepository
 {
-    public function getObjectLike($object)
+    public function getObjectLike($name)
     {
-        $object = $object . "%";
         $qb = $this->createQueryBuilder('o')
-            ->select('o.object')
-            ->where('o.object = :object')
-            ->andWhere('o.object LIKE :object')
-            ->setParameter('object', $object)
+            ->select('o.name')
+            ->where('o.name LIKE :name')
+            ->setParameter('name', $name.'%')
             ->getQuery();
         return $qb->getResult();
     }

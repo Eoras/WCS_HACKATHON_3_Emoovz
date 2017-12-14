@@ -5,6 +5,16 @@
     <form>
         <input id="appbundle_room_object" autocomplete="off" type="text" name="search" placeholder="Recherche">
     </form>
-    <div id="autocomplete"></div>
+    <ul id="autocomplete"></ul>
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+    <script src="{{ asset('build/app.js') }}"></script>
+    <script>
+        $('#autocomplete').html('default');
+    </script>
 
 {% endblock %}

@@ -44,7 +44,7 @@ class SearchController extends Controller
      * @param Request $request
      * @param $object
      * @return JsonResponse
-     * @Route("/object/list/{object}", name="list-object")
+     * @Route("/objects/list/{object}", name="list-object")
      */
     public function autocompleteAction(Request $request, $object)
     {
