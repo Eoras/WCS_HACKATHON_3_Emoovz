@@ -1,39 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Rooms list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="jumbotron">
+        <h1 class="panel-title text-center">Choisissez vos pièces</h1>
+    </div>
+    <div class="row mainZone">
         {% for room in rooms %}
-            <tr>
-                <td><a href="{{ path('room_show', { 'id': room.id }) }}">{{ room.id }}</a></td>
-                <td>{{ room.name }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('room_show', { 'id': room.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('room_edit', { 'id': room.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            <div class="col-sm-3">
+                <a href="{{ path('room_index', { 'id':moveOut.id } ) }}" class="thumbnail thumbnail1">{{ room.name }}</a>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('room_new') }}">Create a new room</a>
-        </li>
-    </ul>
+        <div class="col-sm-3">
+            <a href="{{ path('room_new') }}" class="thumbnail thumbnail1">Autres</a>
+        </div>
+    </div>
 {% endblock %}

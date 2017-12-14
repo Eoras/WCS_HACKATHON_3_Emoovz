@@ -26,7 +26,6 @@ class MenuController extends Controller
      */
     public function userRoomAction(MoveOut $moveOut)
     {
-        $em = $this->getDoctrine()->getManager();
         $menuRooms = $moveOut->getRooms();
 
         return $this->render('menu.html.twig', array(

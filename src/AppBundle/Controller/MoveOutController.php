@@ -26,7 +26,7 @@ class MoveOutController extends Controller
 
         $moveOuts = $em->getRepository('AppBundle:MoveOut')->findAll();
 
-        return $this->render('moveout/index.html.twig', array(
+        return $this->render('moveout/old.index.html.twig', array(
             'moveOuts' => $moveOuts,
         ));
     }
