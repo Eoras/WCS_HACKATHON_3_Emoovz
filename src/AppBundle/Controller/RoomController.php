@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\MoveOut;
 use AppBundle\Entity\Room;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -17,10 +18,10 @@ class RoomController extends Controller
     /**
      * Lists all room entities.
      *
-     * @Route("/", name="room_index")
+     * @Route("/{id}", name="room_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(MoveOut $moveOut)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -28,6 +29,7 @@ class RoomController extends Controller
 
         return $this->render('room/index.html.twig', array(
             'rooms' => $rooms,
+            'moveOut' => $moveOut,
         ));
     }
 
