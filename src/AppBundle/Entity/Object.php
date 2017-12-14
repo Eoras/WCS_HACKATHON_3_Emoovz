@@ -20,9 +20,9 @@ class Object
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoomObject", mappedBy="object")
      */
-    private $rooms;
+    private $moveOutRoomObjects;
 
     // PERSONNAL RELATIONS
 
@@ -42,10 +42,19 @@ class Object
      */
     private $name;
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->moveOutRoomObjects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -75,13 +84,6 @@ class Object
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->rooms = new ArrayCollection();
-    }
 
     /**
      * Set category
@@ -108,37 +110,36 @@ class Object
     }
 
     /**
-     * Add room
+     * Add moveOutRoomObject
      *
-     * @param \AppBundle\Entity\Room $room
+     * @param \AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject
      *
      * @return Object
      */
-    public function addRoom(\AppBundle\Entity\Room $room)
+    public function addMoveOutRoomObject(\AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject)
     {
-        $this->rooms[] = $room;
+        $this->moveOutRoomObjects[] = $moveOutRoomObject;
 
         return $this;
     }
 
     /**
-     * Remove room
+     * Remove moveOutRoomObject
      *
-     * @param \AppBundle\Entity\Room $room
+     * @param \AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject
      */
-    public function removeRoom(\AppBundle\Entity\Room $room)
+    public function removeMoveOutRoomObject(\AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject)
     {
-        $this->rooms->removeElement($room);
+        $this->moveOutRoomObjects->removeElement($moveOutRoomObject);
     }
 
     /**
-     * Get rooms
+     * Get moveOutRoomObjects
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getRooms()
+    public function getMoveOutRoomObjects()
     {
-        return $this->rooms;
+        return $this->moveOutRoomObjects;
     }
-
 }

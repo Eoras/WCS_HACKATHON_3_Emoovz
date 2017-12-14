@@ -31,5 +31,9 @@ class MoveOutRoom
      */
     private $room;
 
-}
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoomObject", mappedBy="moveOutRoom")
+     */
+    private $moveOutRoomObjects;
 
+}

@@ -31,6 +31,18 @@ class MoveOutRoom
      */
     private $room;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoomObject", mappedBy="moveOutRoom")
+     */
+    private $moveOutRoomObjects;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->moveOutRoomObjects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -52,6 +64,7 @@ class MoveOutRoom
     public function setMoveOut(\AppBundle\Entity\MoveOut $moveOut = null)
     {
         $this->moveOut = $moveOut;
+
 
         return $this;
     }
@@ -88,5 +101,39 @@ class MoveOutRoom
     public function getRoom()
     {
         return $this->room;
+    }
+
+    /**
+     * Add moveOutRoomObject
+     *
+     * @param \AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject
+     *
+     * @return MoveOutRoom
+     */
+    public function addMoveOutRoomObject(\AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject)
+    {
+        $this->moveOutRoomObjects[] = $moveOutRoomObject;
+
+        return $this;
+    }
+
+    /**
+     * Remove moveOutRoomObject
+     *
+     * @param \AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject
+     */
+    public function removeMoveOutRoomObject(\AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject)
+    {
+        $this->moveOutRoomObjects->removeElement($moveOutRoomObject);
+    }
+
+    /**
+     * Get moveOutRoomObjects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMoveOutRoomObjects()
+    {
+        return $this->moveOutRoomObjects;
     }
 }

@@ -20,9 +20,9 @@ class Object
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoomObject", mappedBy="object")
      */
-    private $rooms;
+    private $moveOutRoomObjects;
 
     // PERSONNAL RELATIONS
 
@@ -42,103 +42,5 @@ class Object
      */
     private $name;
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Object
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->rooms = new ArrayCollection();
-    }
-
-    /**
-     * Set category
-     *
-     * @param \AppBundle\Entity\Category $category
-     *
-     * @return Object
-     */
-    public function setCategory(\AppBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \AppBundle\Entity\Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Add room
-     *
-     * @param \AppBundle\Entity\Room $room
-     *
-     * @return Object
-     */
-    public function addRoom(\AppBundle\Entity\Room $room)
-    {
-        $this->rooms[] = $room;
-
-        return $this;
-    }
-
-    /**
-     * Remove room
-     *
-     * @param \AppBundle\Entity\Room $room
-     */
-    public function removeRoom(\AppBundle\Entity\Room $room)
-    {
-        $this->rooms->removeElement($room);
-    }
-
-    /**
-     * Get rooms
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRooms()
-    {
-        return $this->rooms;
-    }
 
 }

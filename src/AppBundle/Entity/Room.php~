@@ -12,15 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Room
 {
+
+
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoom", mappedBy="room")
      */
     private $moveOutRooms;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Object")
-     */
-    private $objects;
 
     // PERSONNAL RELATIONS
 
@@ -40,4 +37,80 @@ class Room
      */
     private $name;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->moveOutRooms = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->objects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Room
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add moveOutRoom
+     *
+     * @param \AppBundle\Entity\MoveOutRoom $moveOutRoom
+     *
+     * @return Room
+     */
+    public function addMoveOutRoom(\AppBundle\Entity\MoveOutRoom $moveOutRoom)
+    {
+        $this->moveOutRooms[] = $moveOutRoom;
+
+        return $this;
+    }
+
+    /**
+     * Remove moveOutRoom
+     *
+     * @param \AppBundle\Entity\MoveOutRoom $moveOutRoom
+     */
+    public function removeMoveOutRoom(\AppBundle\Entity\MoveOutRoom $moveOutRoom)
+    {
+        $this->moveOutRooms->removeElement($moveOutRoom);
+    }
+
+    /**
+     * Get moveOutRooms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMoveOutRooms()
+    {
+        return $this->moveOutRooms;
+    }
 }

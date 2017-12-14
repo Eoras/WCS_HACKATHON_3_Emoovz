@@ -26,7 +26,7 @@ class RoomFixtures extends Fixture implements OrderedFixtureInterface
             "Salon",
             "Salle à manger",
             "Salle de Bain",
-            "Toilette",
+            "Toilettes",
             "Garage",
             "Cave",
             "Autre",
