@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Moveouts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for moveOut in moveOuts %}
+            <tr>
+                <td><a href="{{ path('moveout_show', { 'id': moveOut.id }) }}">{{ moveOut.id }}</a></td>
+                <td>{{ moveOut.email }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('moveout_show', { 'id': moveOut.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('moveout_edit', { 'id': moveOut.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('moveout_new') }}">Create a new moveOut</a>
+        </li>
+    </ul>
+{% endblock %}
