@@ -3,5 +3,30 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import '~font-awesome/scss/font-awesome.scss';
 $fa-font-path: "~font-awesome/fonts";
 
+
 @import "menu";
 @import "panelRoom";
+* {
+  border-radius: 0!important;
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+.inputForm {
+  height: 120px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 3em;
+}
+
+.inputForm:focus {
+  border: solid 2px #4C448F;
+}
+
+.btnForm {
+  background-color: #4C448F;
+  font-size: 2em;
+  color: white;
+}
+.btnForm:hover {
+  color: white;
+}
+

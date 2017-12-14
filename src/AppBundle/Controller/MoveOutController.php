@@ -51,7 +51,7 @@ class MoveOutController extends Controller
             return $this->redirectToRoute('moveout_show', array('id' => $moveOut->getId()));
         }
 
-        return $this->render('moveout/new.html.twig', array(
+        return $this->render('moveout/newMoveOut.html.twig', array(
             'moveOut' => $moveOut,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class MoveOutController extends Controller
     {
         $deleteForm = $this->createDeleteForm($moveOut);
 
-        return $this->render('moveout/show.html.twig', array(
+        return $this->render('moveout/old.show.html.twig', array(
             'moveOut' => $moveOut,
             'delete_form' => $deleteForm->createView(),
         ));

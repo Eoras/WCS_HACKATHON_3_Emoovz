@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -70,5 +71,46 @@ class Category
     {
         return $this->name;
     }
-}
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->objects = new ArrayCollection();
+    }
+
+    /**
+     * Add object
+     *
+     * @param \AppBundle\Entity\Object $object
+     *
+     * @return Category
+     */
+    public function addObject(\AppBundle\Entity\Object $object)
+    {
+        $this->objects[] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Remove object
+     *
+     * @param \AppBundle\Entity\Object $object
+     */
+    public function removeObject(\AppBundle\Entity\Object $object)
+    {
+        $this->objects->removeElement($object);
+    }
+
+    /**
+     * Get objects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObjects()
+    {
+        return $this->objects;
+    }
+}

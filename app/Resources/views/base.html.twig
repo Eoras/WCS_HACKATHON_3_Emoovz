@@ -2,10 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Emoovz | Votre inventaire{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/global.css') }}" />
+            <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" href="{{ asset('build/global.css') }}" />
     </head>
     <body>
     <div class="container-fluid">
@@ -16,6 +18,11 @@
         {% block body %}
         {% endblock %}
     </div>
+
+        {% block body %}
+            <p>Pas de texte</p>
+        {% endblock %}
+
         {% block javascripts %}
             <script src="{{ asset('build/app.js') }}"></script>
         {% endblock %}
