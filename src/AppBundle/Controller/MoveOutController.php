@@ -52,7 +52,7 @@ class MoveOutController extends Controller
 
             $session->set('moveOut', $moveOut);
 
-            return $this->redirectToRoute('moveout_show', array('id' => $moveOut->getId()));
+            return $this->redirectToRoute('room_index');
         }
 
         return $this->render('moveout/newMoveOut.html.twig', array(

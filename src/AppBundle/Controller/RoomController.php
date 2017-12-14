@@ -18,7 +18,7 @@ class RoomController extends Controller
     /**
      * Lists all room entities.
      *
-     * @Route("/}", name="room_index")
+     * @Route("/", name="room_index")
      * @Method("GET")
      */
     public function indexAction()

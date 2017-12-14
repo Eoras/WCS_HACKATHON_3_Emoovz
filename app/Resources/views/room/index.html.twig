@@ -1,18 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
     <div class="jumbotron">
         <h1 class="panel-title text-center">Choisissez vos pièces</h1>
     </div>
     <div class="row mainZone">
         {% for room in rooms %}
-            <div class="col-sm-3">
-                <a href="{{ path('room_index', { 'id':moveOut.id } ) }}" class="thumbnail thumbnail1">{{ room.name }}</a>
+            <div class="col-sm-3 text-center">
+                <a href="{{ path('room_index') }}" class="thumbnail thumbnail1">{{ room.name }}</a>
             </div>
         {% endfor %}
-        <div class="col-sm-3">
-            <a href="{{ path('room_new') }}" class="thumbnail thumbnail1">Autres</a>
-        </div>
     </div>
 {% endblock %}

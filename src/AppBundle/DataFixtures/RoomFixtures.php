@@ -29,6 +29,7 @@ class RoomFixtures extends Fixture implements OrderedFixtureInterface
             "Toilette",
             "Garage",
             "Cave",
+            "Autre",
         ];
 
         foreach ($rooms as $name) {

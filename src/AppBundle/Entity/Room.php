@@ -13,11 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Room
 {
     /**
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MoveOut", inversedBy="rooms")
-     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoom", mappedBy="room")
      */
-    private $moveOut;
+    private $moveOutRooms;
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Object")
@@ -42,12 +40,19 @@ class Room
      */
     private $name;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->moveOutRooms = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->objects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -77,36 +82,39 @@ class Room
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->objects = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Set moveOut
+     * Add moveOutRoom
      *
-     * @param \AppBundle\Entity\MoveOut $moveOut
+     * @param \AppBundle\Entity\MoveOutRoom $moveOutRoom
      *
      * @return Room
      */
-    public function setMoveOut(\AppBundle\Entity\MoveOut $moveOut = null)
+    public function addMoveOutRoom(\AppBundle\Entity\MoveOutRoom $moveOutRoom)
     {
-        $this->moveOut = $moveOut;
+        $this->moveOutRooms[] = $moveOutRoom;
 
         return $this;
     }
 
     /**
-     * Get moveOut
+     * Remove moveOutRoom
      *
-     * @return \AppBundle\Entity\MoveOut
+     * @param \AppBundle\Entity\MoveOutRoom $moveOutRoom
      */
-    public function getMoveOut()
+    public function removeMoveOutRoom(\AppBundle\Entity\MoveOutRoom $moveOutRoom)
     {
-        return $this->moveOut;
+        $this->moveOutRooms->removeElement($moveOutRoom);
+    }
+
+    /**
+     * Get moveOutRooms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMoveOutRooms()
+    {
+        return $this->moveOutRooms;
     }
 
     /**

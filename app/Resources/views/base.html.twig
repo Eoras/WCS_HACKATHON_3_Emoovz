@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Emoovz | Votre inventaire{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('build/global.css') }}" />
-            <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-    <div class="container-fluid">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Emoovz | Votre inventaire{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('build/global.css') }}"/>
+        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<div class="container-fluid">
+    {% if app.session.get('moveOut') %}
+        <div class="col-xs-4">
 
-            {% if app.session.get('moveOut') %}
-                {{ render(controller('AppBundle:Menu:userRoom',
-                    { 'id': app.session.get('moveOut').id }
-                    )) }}
-            {% endif %}
-
+            {{ render(controller('AppBundle:Menu:userRoom',
+                { 'id': app.session.get('moveOut').id }
+            )) }}
+        </div>
+    {% endif %}
+    <div class="{{ (app.session.get('moveOut') is not null) ? 'col-xs-8' : 'col-xs-12'}}">
         {% block body %}
             <p></p>
         {% endblock %}
     </div>
-        {% block javascripts %}
-            <script src="{{ asset('build/app.js') }}"></script>
-        {% endblock %}
-    </body>
+</div>
+{% block javascripts %}
+    <script src="{{ asset('build/app.js') }}"></script>
+{% endblock %}
+</body>
 </html>
