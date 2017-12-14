@@ -12,17 +12,15 @@
     <body>
     <div class="container-fluid">
         {% block menu %}
-            {{ render(controller('AppBundle', {'id':moveOut})) }}
+            {% if moveOut.id is defined %}
+            {{ render(controller('AppBundle:Menu:userRoom', {'id':moveOut})) }}
+        {% endif %}
         {% endblock %}
-
-        {% block body %}
-        {% endblock %}
-    </div>
 
         {% block body %}
             <p>Pas de texte</p>
         {% endblock %}
-
+    </div>
         {% block javascripts %}
             <script src="{{ asset('build/app.js') }}"></script>
         {% endblock %}
