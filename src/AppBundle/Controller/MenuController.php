@@ -147,4 +147,21 @@ class MenuController extends Controller
             'category' => $object->getCategory()->getId(),
         ));
     }
+
+    /**
+     * Deletes a room entity.
+     *
+     * @Route("/move_out_room_object_delete/{id}", name="move_out_room_object_delete")
+     * @Method({"GET", "POST"})
+     */
+    public function deleteMoveOutRoomObjectAction(MoveOutRoomObject $moveOutRoomObject)
+    {
+        $moveOutRoomId = $moveOutRoomObject->getMoveOutRoom()->getId();
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($moveOutRoomObject);
+            $em->flush();
+
+
+        return $this->redirectToRoute('user_object_index', ['id'=> $moveOutRoomId]);
+    }
 }

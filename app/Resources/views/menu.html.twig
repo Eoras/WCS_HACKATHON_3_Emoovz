@@ -21,4 +21,10 @@
             </div>
         </a>
     {% endfor %}
+            <ul>
+                {% for object in moveOutRoom.moveOutRoomObjects %}
+                    <li>{{ object.object.name }}<a href="{{ path('move_out_room_object_delete', {'id':object.id }) }}"><span class="fa fa-remove"></span></a></li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
 </div>
