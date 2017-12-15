@@ -5,13 +5,13 @@
     <form>
         <input id="appbundle_room_object" autocomplete="off" type="text" name="search" placeholder="Recherche">
     </form>
-    <ul id="autocomplete">
+    <div class="row mainZone" id="autocomplete">
         {% for object in objects %}
             <div class="col-sm-3 text-center">
                 <a href="TODO" class="thumbnail thumbnail1">{{ object.name }}</a>
             </div>
         {% endfor %}
-    </ul>
+    </div>
 
 {% endblock %}
 
