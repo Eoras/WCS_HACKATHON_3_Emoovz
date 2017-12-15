@@ -8,9 +8,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\MoveOut;
 use AppBundle\Entity\MoveOutRoom;
+use AppBundle\Entity\Object;
 use AppBundle\Entity\Room;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -77,4 +80,44 @@ class MenuController extends Controller
             ;
     }
 
+    /**
+     * Lists all room entities.
+     *
+     * @Route("/user-object/{id}", name="user_object_index")
+     * @Method("GET")
+     */
+    public function userCategoryAction(MoveOutRoom $moveOutRoom)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('AppBundle:Category')->findAll();
+        $objects = $em->getRepository('AppBundle:Object')->findAll();
+
+        return $this->render('category/index.html.twig', array(
+            'moveOutRoom' => $moveOutRoom,
+            'categories' => $categories,
+            'objects' => $objects,
+        ));
+    }
+
+    /**
+     * Lists all room entities.
+     *
+     * @Route("/user-object/{moveOutRoom_id}/category/{category_id}", name="user_object_category_index")
+     * @ParamConverter("moveOutRoom", class="AppBundle:MoveOutRoom", options={"id" = "moveOutRoom_id"})
+     * @ParamConverter("category", class="AppBundle:Category", options={"id" = "category_id"})
+     * @Method("GET")
+     */
+    public function userObjectAction(MoveOutRoom $moveOutRoom, Category $category)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $objects = $em->getRepository('AppBundle:Object')->findByCategory($category->getId());
+
+        return $this->render('object/index.html.twig', array(
+            'objects' => $objects,
+            'moveOutRoom' => $moveOutRoom,
+            'category' => $category,
+        ));
+    }
 }
