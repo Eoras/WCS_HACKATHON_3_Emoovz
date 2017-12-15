@@ -1,24 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="jumbotron">
-        <h1 class="panel-title text-center"><a href="/room" class="pull-left fleche"><</a>Choisissez vos objets</h1>
-    </div>
+
     <form>
-        <input id="appbundle_room_object" autocomplete="off" type="text" name="search" placeholder="Recherche" class="form-group">
+        <input id="appbundle_room_object" autocomplete="off" type="text" name="search" placeholder="Recherche">
     </form>
     <div class="row mainZone" id="autocomplete">
-        {% for category in categories %}
+        {% for object in objects %}
             <div class="col-sm-3 text-center">
-                <a href="{{ path('user_object_category_index', {'moveOutRoom':moveOutRoom.id, 'category':category.id} ) }}"
-                   class="thumbnail thumbnail1"
-                   style="background-image: url( {{asset( 'picturesCategory/' ~ category.pictureName) }})">
-                    {{ category.name }}
-                </a>
+                <a href="TODO" class="thumbnail thumbnail1">{{ object.name }}</a>
             </div>
         {% endfor %}
     </div>
+
 {% endblock %}
+
 
 {% block javascripts %}
 
@@ -38,7 +34,7 @@
                         let html = '';
                         for (object of objects) {
                             html += `<div class="col-sm-3 text-center">
-                                    <a href="/new/{{ moveOutRoom.id }}/${object.id}" class="thumbnail thumbnail1">${object.name}</a>
+                                    <a href="TODO/${object.id}" class="thumbnail thumbnail1">${object.name}</a>
                                     </div>`;
 
                         }
