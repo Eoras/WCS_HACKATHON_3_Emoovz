@@ -5,7 +5,13 @@
     <form>
         <input id="appbundle_room_object" autocomplete="off" type="text" name="search" placeholder="Recherche">
     </form>
-    <ul id="autocomplete">dqsd</ul>
+    <ul id="autocomplete">
+        {% for object in objects %}
+            <div class="col-sm-3 text-center">
+                <a href="TODO" class="thumbnail thumbnail1">{{ object.name }}</a>
+            </div>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
 
@@ -28,7 +34,7 @@
                         let html = '';
                         for (object of objects) {
                             html += `<div class="col-sm-3 text-center">
-                                    <a href="add/item/session/${object.id}" class="thumbnail thumbnail1">${object.name}</a>
+                                    <a href="TODO/${object.id}" class="thumbnail thumbnail1">${object.name}</a>
                                     </div>`;
 
                         }
@@ -49,7 +55,7 @@
                         let html = '';
                         for (object of objects) {
                             html += `<div class="col-sm-3 text-center">
-                                    <a href="add/item/session/${object.id}" class="thumbnail thumbnail1">${object.name}</a>
+                                    <a href="TODO/${object.id}" class="thumbnail thumbnail1">${object.name}</a>
                                     </div>`;
 
                         }
