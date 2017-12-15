@@ -13,7 +13,6 @@
 <div class="container-fluid">
     {% if app.session.get('moveOut') %}
         <div class="col-xs-4">
-
             {{ render(controller('AppBundle:Menu:userRoom',
                 { 'id': app.session.get('moveOut').id }
             )) }}

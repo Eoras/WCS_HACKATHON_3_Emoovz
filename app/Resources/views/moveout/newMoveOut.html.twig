@@ -4,7 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-xd-12 text-center">
-                <h1>Entrez votre email si vous déménagez !</h1>
+                <div class="jumbotron">
+                    <h1 class="mainTitle">Vous prévoyez de déménager ? <br/> Entrez votre email !</h1>
+                </div>
                 {{ form_start(form) }}
                 <div class="form-group">
                 {{ form_widget(form.email, {'attr': {'class': 'inputForm text-center'}}) }}

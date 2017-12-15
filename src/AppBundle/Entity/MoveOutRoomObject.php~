@@ -27,9 +27,66 @@ class MoveOutRoomObject
     private $moveOutRoom;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MoveOutRoom", inversedBy="moveOutRoomObjects")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Object", inversedBy="moveOutRoomObjects")
      */
     private $object;
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set moveOutRoom
+     *
+     * @param \AppBundle\Entity\MoveOutRoom $moveOutRoom
+     *
+     * @return MoveOutRoomObject
+     */
+    public function setMoveOutRoom(\AppBundle\Entity\MoveOutRoom $moveOutRoom = null)
+    {
+        $this->moveOutRoom = $moveOutRoom;
+
+        return $this;
+    }
+
+    /**
+     * Get moveOutRoom
+     *
+     * @return \AppBundle\Entity\MoveOutRoom
+     */
+    public function getMoveOutRoom()
+    {
+        return $this->moveOutRoom;
+    }
+
+    /**
+     * Set object
+     *
+     * @param \AppBundle\Entity\MoveOutRoom $object
+     *
+     * @return MoveOutRoomObject
+     */
+    public function setObject(\AppBundle\Entity\MoveOutRoom $object = null)
+    {
+        $this->object = $object;
+
+        return $this;
+    }
+
+    /**
+     * Get object
+     *
+     * @return \AppBundle\Entity\MoveOutRoom
+     */
+    public function getObject()
+    {
+        return $this->object;
+    }
+}

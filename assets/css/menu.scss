@@ -1,11 +1,32 @@
-.inputFormRoomList {
-  height: 50px;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-size: 2em;
-  background-color: purple;
-  color: white;
+$rose: #C23867;
+$violet: #4C448F;
+
+.jumbotron {
+  h1 {
+    color: $rose;
+  }
 }
 
-.inputFormRoomList:focus {
-  border: solid 2px #4C448F;
+.menu {
+  .inputFormRoomList {
+    height: 50px;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: calc(2vh + 10px);
+    background-color: rgba(76, 68, 143, 0.8);
+    color: white;
+    border: 1px solid white;
+  }
+
+  .inputFormRoomList:hover {
+    //background-color: rgba(194, 56, 103, 0.5);
+    background-color: $rose;
+    text-decoration: none;
+    color: white;
+  }
+
+  .btn-danger {
+    background-color: transparent;
+    color: white;
+    border: none;
+  }
 }

@@ -37,6 +37,12 @@ class Category
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pictureName", type="string", length=255)
+     */
+    private $pictureName;
 
     /**
      * Get id

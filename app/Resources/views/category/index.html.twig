@@ -7,7 +7,11 @@
     <div class="row mainZone">
         {% for category in categories %}
             <div class="col-sm-3 text-center">
-                <a href="{{ path('object_index', {'id':category.id}) }}" class="thumbnail thumbnail1">{{ category.name }}</a>
+                <a href="{{ path('object_index', {'id':category.id}) }}"
+                   class="thumbnail thumbnail1"
+                   style="background-image: url( {{asset( 'picturesCategory/' ~ category.pictureName) }})">
+                    {{ category.name }}
+                </a>
             </div>
         {% endfor %}
     </div>
