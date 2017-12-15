@@ -14,9 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 class MoveOut
 {
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Room", mappedBy="moveOut")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoom", mappedBy="moveOut")
      */
-    private $rooms;
+    private $moveOutRooms;
 
     // PERSONNAL RELATIONS
 
@@ -37,70 +37,22 @@ class MoveOut
     private $email;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->moveOutRooms = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-
-    /**
-     * Set rooms
-     *
-     * @param string $rooms
-     *
-     * @return MoveOut
-     */
-    public function setRooms($rooms)
-    {
-        $this->rooms = $rooms;
-
-        return $this;
-    }
-
-    /**
-     * Get rooms
-     *
-     * @return string
-     */
-    public function getRooms()
-    {
-        return $this->rooms;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->rooms = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add room
-     *
-     * @param \AppBundle\Entity\Room $room
-     *
-     * @return MoveOut
-     */
-    public function addRoom(\AppBundle\Entity\Room $room)
-    {
-        $this->rooms[] = $room;
-
-        return $this;
-    }
-
-    /**
-     * Remove room
-     *
-     * @param \AppBundle\Entity\Room $room
-     */
-    public function removeRoom(\AppBundle\Entity\Room $room)
-    {
-        $this->rooms->removeElement($room);
-    }
-
 
     /**
      * Set email
@@ -124,5 +76,39 @@ class MoveOut
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Add moveOutRoom
+     *
+     * @param \AppBundle\Entity\MoveOutRoom $moveOutRoom
+     *
+     * @return MoveOut
+     */
+    public function addMoveOutRoom(\AppBundle\Entity\MoveOutRoom $moveOutRoom)
+    {
+        $this->moveOutRooms[] = $moveOutRoom;
+
+        return $this;
+    }
+
+    /**
+     * Remove moveOutRoom
+     *
+     * @param \AppBundle\Entity\MoveOutRoom $moveOutRoom
+     */
+    public function removeMoveOutRoom(\AppBundle\Entity\MoveOutRoom $moveOutRoom)
+    {
+        $this->moveOutRooms->removeElement($moveOutRoom);
+    }
+
+    /**
+     * Get moveOutRooms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMoveOutRooms()
+    {
+        return $this->moveOutRooms;
     }
 }

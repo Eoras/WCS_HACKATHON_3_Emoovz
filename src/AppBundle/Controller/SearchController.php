@@ -59,4 +59,23 @@ class SearchController extends Controller
             throw new HttpException('500', 'Invalid call');
         }
     }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @Route("/objects/all/", name="list-all-objects")
+     */
+    public function fillAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()){
+            /**
+             * @var $repository ObjectRepository
+             */
+            $repository = $this->getDoctrine()->getRepository('AppBundle:Object');
+            $data = $repository->getAllObjects();
+            return new JsonResponse(["data" => json_encode($data)]);
+        } else {
+            throw new HttpException('500', 'Invalid call');
+        }
+    }
 }

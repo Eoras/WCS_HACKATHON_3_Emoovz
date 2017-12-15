@@ -12,17 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Room
 {
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MoveOut", inversedBy="rooms")
-     *
-     */
-    private $moveOut;
+
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Object")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoom", mappedBy="room")
      */
-    private $objects;
+    private $moveOutRooms;
 
     // PERSONNAL RELATIONS
 
@@ -42,12 +37,19 @@ class Room
      */
     private $name;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->moveOutRooms = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->objects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -77,69 +79,38 @@ class Room
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->objects = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Set moveOut
+     * Add moveOutRoom
      *
-     * @param \AppBundle\Entity\MoveOut $moveOut
+     * @param \AppBundle\Entity\MoveOutRoom $moveOutRoom
      *
      * @return Room
      */
-    public function setMoveOut(\AppBundle\Entity\MoveOut $moveOut = null)
+    public function addMoveOutRoom(\AppBundle\Entity\MoveOutRoom $moveOutRoom)
     {
-        $this->moveOut = $moveOut;
+        $this->moveOutRooms[] = $moveOutRoom;
 
         return $this;
     }
 
     /**
-     * Get moveOut
+     * Remove moveOutRoom
      *
-     * @return \AppBundle\Entity\MoveOut
+     * @param \AppBundle\Entity\MoveOutRoom $moveOutRoom
      */
-    public function getMoveOut()
+    public function removeMoveOutRoom(\AppBundle\Entity\MoveOutRoom $moveOutRoom)
     {
-        return $this->moveOut;
+        $this->moveOutRooms->removeElement($moveOutRoom);
     }
 
     /**
-     * Add object
-     *
-     * @param \AppBundle\Entity\Object $object
-     *
-     * @return Room
-     */
-    public function addObject(\AppBundle\Entity\Object $object)
-    {
-        $this->objects[] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Remove object
-     *
-     * @param \AppBundle\Entity\Object $object
-     */
-    public function removeObject(\AppBundle\Entity\Object $object)
-    {
-        $this->objects->removeElement($object);
-    }
-
-    /**
-     * Get objects
+     * Get moveOutRooms
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getObjects()
+    public function getMoveOutRooms()
     {
-        return $this->objects;
+        return $this->moveOutRooms;
     }
 }

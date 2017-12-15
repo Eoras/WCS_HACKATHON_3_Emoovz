@@ -1,0 +1,11 @@
+.inputFormRoomList {
+  height: 50px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 2em;
+  background-color: purple;
+  color: white;
+}
+
+.inputFormRoomList:focus {
+  border: solid 2px #4C448F;
+}

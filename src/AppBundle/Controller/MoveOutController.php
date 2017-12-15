@@ -3,9 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\MoveOut;
+use AppBundle\Entity\MoveOutRoom;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Moveout controller.
@@ -26,7 +29,7 @@ class MoveOutController extends Controller
 
         $moveOuts = $em->getRepository('AppBundle:MoveOut')->findAll();
 
-        return $this->render('moveout/index.html.twig', array(
+        return $this->render('moveout/old.index.html.twig', array(
             'moveOuts' => $moveOuts,
         ));
     }
@@ -37,7 +40,7 @@ class MoveOutController extends Controller
      * @Route("/new", name="moveout_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, SessionInterface $session)
     {
         $moveOut = new Moveout();
         $form = $this->createForm('AppBundle\Form\MoveOutType', $moveOut);
@@ -48,7 +51,9 @@ class MoveOutController extends Controller
             $em->persist($moveOut);
             $em->flush();
 
-            return $this->redirectToRoute('moveout_show', array('id' => $moveOut->getId()));
+            $session->set('moveOut', $moveOut);
+
+            return $this->redirectToRoute('room_index');
         }
 
         return $this->render('moveout/newMoveOut.html.twig', array(

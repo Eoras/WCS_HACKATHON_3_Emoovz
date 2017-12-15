@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    <h1 class="panel-title text-center">CONNECTÉ <a href="{{ path('disconnect') }}" class="pull-right">X</a>
+    </h1>
+</div>
+<div class="">
+        {% for moveOutRoom in moveOutRooms %}
+            <a href="{{ path('user_object_index', {'id':moveOutRoom.id}) }}">
+            <button class="btn btn-block btn-lg inputFormRoomList">
+                {{ moveOutRoom.room.name}}
+                {{ form_start(delete_forms[moveOutRoom.id]) }}
+                <button type="submit" class="btn btn-danger"><span
+                            class="fa fa-trash-o"></span>
+                </button>
+                <hr>
+                {{ form_end(delete_forms[moveOutRoom.id]) }}
+            </button>
+            </a>
+        {% endfor %}
+</div>

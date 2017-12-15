@@ -1,0 +1,35 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MoveOutRoomObject
+ *
+ * @ORM\Table(name="move_out_room_object")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MoveOutRoomObjectRepository")
+ */
+class MoveOutRoomObject
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MoveOutRoom", inversedBy="moveOutRoomObjects")
+     */
+    private $moveOutRoom;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MoveOutRoom", inversedBy="moveOutRoomObjects")
+     */
+    private $object;
+
+}
+

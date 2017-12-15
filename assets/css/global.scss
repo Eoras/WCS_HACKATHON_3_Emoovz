@@ -3,6 +3,9 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import '~font-awesome/scss/font-awesome.scss';
 $fa-font-path: "~font-awesome/fonts";
 
+
+@import "menu";
+@import "room";
 * {
   border-radius: 0!important;
   font-family: 'Alegreya Sans', sans-serif;
@@ -26,3 +29,4 @@ $fa-font-path: "~font-awesome/fonts";
 .btnForm:hover {
   color: white;
 }
+

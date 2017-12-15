@@ -2,30 +2,16 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Object
+ * MoveOutRoom
  *
- * @ORM\Table(name="object")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ObjectRepository")
+ * @ORM\Table(name="move_out_room")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MoveOutRoomRepository")
  */
-class Object
+class MoveOutRoom
 {
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="objects")
-     */
-    private $category;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoomObject", mappedBy="object")
-     */
-    private $moveOutRoomObjects;
-
-    // PERSONNAL RELATIONS
-
     /**
      * @var int
      *
@@ -36,12 +22,19 @@ class Object
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MoveOut", inversedBy="moveOutRooms")
      */
-    private $name;
+    private $moveOut;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Room", inversedBy="moveOutRooms")
+     */
+    private $room;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoomObject", mappedBy="moveOutRoom")
+     */
+    private $moveOutRoomObjects;
 
     /**
      * Constructor
@@ -62,51 +55,52 @@ class Object
     }
 
     /**
-     * Set name
+     * Set moveOut
      *
-     * @param string $name
+     * @param \AppBundle\Entity\MoveOut $moveOut
      *
-     * @return Object
+     * @return MoveOutRoom
      */
-    public function setName($name)
+    public function setMoveOut(\AppBundle\Entity\MoveOut $moveOut = null)
     {
-        $this->name = $name;
+        $this->moveOut = $moveOut;
+
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get moveOut
      *
-     * @return string
+     * @return \AppBundle\Entity\MoveOut
      */
-    public function getName()
+    public function getMoveOut()
     {
-        return $this->name;
+        return $this->moveOut;
     }
 
     /**
-     * Set category
+     * Set room
      *
-     * @param \AppBundle\Entity\Category $category
+     * @param \AppBundle\Entity\Room $room
      *
-     * @return Object
+     * @return MoveOutRoom
      */
-    public function setCategory(\AppBundle\Entity\Category $category = null)
+    public function setRoom(\AppBundle\Entity\Room $room = null)
     {
-        $this->category = $category;
+        $this->room = $room;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Get room
      *
-     * @return \AppBundle\Entity\Category
+     * @return \AppBundle\Entity\Room
      */
-    public function getCategory()
+    public function getRoom()
     {
-        return $this->category;
+        return $this->room;
     }
 
     /**
@@ -114,7 +108,7 @@ class Object
      *
      * @param \AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject
      *
-     * @return Object
+     * @return MoveOutRoom
      */
     public function addMoveOutRoomObject(\AppBundle\Entity\MoveOutRoomObject $moveOutRoomObject)
     {

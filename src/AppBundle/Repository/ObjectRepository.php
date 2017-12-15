@@ -21,4 +21,12 @@ class ObjectRepository extends EntityRepository
             ->getQuery();
         return $qb->getResult();
     }
+
+    public function getAllObjects()
+    {
+        $qb = $this->createQueryBuilder('o')
+            ->select('o.name', 'o.id')
+            ->getQuery();
+        return $qb->getResult();
+    }
 }
