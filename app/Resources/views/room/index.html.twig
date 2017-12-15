@@ -7,7 +7,7 @@
     <div class="row mainZone">
         {% for room in rooms %}
             <div class="col-sm-3 text-center">
-                <a href="{{ path('room_index') }}" class="thumbnail thumbnail1">{{ room.name }}</a>
+                <a href="{{ path('room_adding', { 'id':room.id } ) }}" class="thumbnail thumbnail1">{{ room.name }}</a>
             </div>
         {% endfor %}
     </div>

@@ -1,41 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Objects list</h1>
+    <div class="jumbotron">
+        <h1 class="panel-title text-center"><a href="{{ path('user_object_index', {'id':moveOutRoom.id}) }}" class="pull-left"><</a>Choisissez vos objets</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    </div>
+    <div class="row mainZone">
         {% for object in objects %}
-            <tr>
-                <td><a href="{{ path('object_show', { 'id': object.id }) }}">{{ object.id }}</a></td>
-                <td>{{ object.name }}</td>
-                <td>{{ object.category.name }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('object_show', { 'id': object.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('object_edit', { 'id': object.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            <div class="col-sm-3 text-center">
+                <a href="{{ path('object_new', {'moveOutRoom':moveOutRoom.id, 'object':object.id} ) }}" class="thumbnail thumbnail1">{{ object.name }}</a>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('object_new') }}">Create a new object</a>
-        </li>
-    </ul>
+    </div>
 {% endblock %}

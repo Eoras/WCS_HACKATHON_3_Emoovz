@@ -3,10 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\MoveOut;
+use AppBundle\Entity\MoveOutRoom;
 use AppBundle\Entity\Room;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Room controller.
@@ -133,5 +135,42 @@ class RoomController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * @Route("/add_room/{id}", name="room_adding")
+     *
+     * @Method("GET")
+     */
+    public function roomAdd(Room $room, SessionInterface $session)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $moveOutRoom = new MoveOutRoom();
+        $moveOut = $em->getRepository(MoveOut::class)->find($session->get('moveOut')->getId());
+
+        $moveOutRoom->setMoveOut($moveOut);
+        $moveOutRoom->setRoom($room);
+
+        $em->persist($moveOutRoom);
+        $em->flush();
+
+        return $this->redirectToRoute('room_index');
+    }
+
+    /**
+     * Finds and displays a room entity.
+     *
+     * @Route("/add/{id}", name="room_test")
+     * @Method("GET")
+     */
+    public function paulAction(Room $room)
+    {
+
+
+        return $this->render('room/show.html.twig', array(
+            'room' => $room,
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 }

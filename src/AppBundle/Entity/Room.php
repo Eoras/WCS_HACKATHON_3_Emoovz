@@ -12,15 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Room
 {
+
+
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\MoveOutRoom", mappedBy="room")
      */
     private $moveOutRooms;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Object")
-     */
-    private $objects;
 
     // PERSONNAL RELATIONS
 
@@ -115,39 +112,5 @@ class Room
     public function getMoveOutRooms()
     {
         return $this->moveOutRooms;
-    }
-
-    /**
-     * Add object
-     *
-     * @param \AppBundle\Entity\Object $object
-     *
-     * @return Room
-     */
-    public function addObject(\AppBundle\Entity\Object $object)
-    {
-        $this->objects[] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Remove object
-     *
-     * @param \AppBundle\Entity\Object $object
-     */
-    public function removeObject(\AppBundle\Entity\Object $object)
-    {
-        $this->objects->removeElement($object);
-    }
-
-    /**
-     * Get objects
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getObjects()
-    {
-        return $this->objects;
     }
 }

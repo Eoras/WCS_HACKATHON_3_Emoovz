@@ -34,7 +34,7 @@ class ObjectController extends Controller
     /**
      * Creates a new object entity.
      *
-     * @Route("/new", name="object_new")
+     * @Route("/new", name="object_new1")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)

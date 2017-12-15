@@ -1,12 +1,11 @@
-.menu {
-  width: 25vw;
-  ul {
-    padding-left: 0;
-  }
-  .thumbnail2 {
-    height: 150px;
-    background: purple;
-    color: white;
-    font-size: 4em;
-  }
+.inputFormRoomList {
+  height: 50px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 2em;
+  background-color: purple;
+  color: white;
+}
+
+.inputFormRoomList:focus {
+  border: solid 2px #4C448F;
 }
