@@ -28,13 +28,13 @@ class ObjectFixtures extends Fixture implements OrderedFixtureInterface
             3 => ["Table basse", "Guéridon / Table d'appoint", "Table 2-4 personnes", "Table 6-8 personnes", "Table monastère en chêne", "Table Pliante", "Table Ronde"],
             4 => ["Halogène", "Lampe à abat-jour", "Lustre"],
             5 => ["Aquarium", "Miroir", "Tableau / Cadre", "Tapis"],
-            6 => ["Armoire 1 porte", "Armoire 2 Portes", "Armoire 3 Portes", "Armoire 4 portes / dressing", "Bar", "Bibliothèque", "Bibliothèque Lourde", "Buffet 2 corps", "Buffet bas"],
+            6 => ["Commode", "Armoire 1 porte", "Armoire 2 Portes", "Armoire 3 Portes", "Armoire 4 portes / dressing", "Bar", "Bibliothèque", "Bibliothèque Lourde", "Buffet 2 corps", "Buffet bas"],
             7 => ["Chaine Hi-Fi / Home cinema", "Enceinte HI/FI", "Ordinateur", "Petite imprimante", "Photocopieur bureau", "TV"],
             8 => ["Aspirateur", "Cave à vin", "Climatiseur", "Congélateur", "Cuisinière", "Four", "Four micro-onde", "Frigo Américain", "Hotte"],
-            9 => ["Barbecue", "Brouette", "Caisse à outils", "Chaise longue", "Chaise longue", "Chaise PVC/extérieur"],
-            10 => ["Arbre à chats", "Babyfoot", "Balancelle", "Banc/appareil musculation", "Billard", "Canne à pêche", "Flipper", "Guitare"],
+            9 => ["Tondeuse", "Barbecue", "Brouette", "Caisse à outils", "Chaise longue", "Chaise longue", "Chaise PVC/extérieur"],
+            10 => ["Vélo", "Arbre à chats", "Babyfoot", "Balancelle", "Banc/appareil musculation", "Billard", "Canne à pêche", "Flipper", "Guitare"],
             11 => ["Bac de rangement (50 x 60 x 40 cm maximum)", "Coffre / Malle / Cantine", "Pack 10 bouteilles", "Penderie 50cm linéaire", "Poubelle"],
-            12 => ["Chauffeuse", "Lit 1 place", "Lit 2 places", "Lit bébé", "Lit Mezzanine"],
+            12 => ["Matelas double", "Chauffeuse", "Lit 1 place", "Lit 2 places", "Lit bébé", "Lit Mezzanine"],
             13 => ["Object personnalisé"]
         ];
 
