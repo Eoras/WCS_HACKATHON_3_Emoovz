@@ -34,6 +34,7 @@ class CategoryFixtures extends Fixture implements OrderedFixtureInterface
             10 => ["Loisirs", "loisirs.jpg"],
             11 => ["Rangement", "rangement.jpg"],
             12 => ["Literie", "literie.jpg"],
+            13 => ["Autre Objet", "autre.jpg"],
         ];
 
         foreach ($categories as $categoryTab) {
