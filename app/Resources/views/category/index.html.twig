@@ -2,12 +2,13 @@
 
 {% block body %}
     <div class="jumbotron">
-        <h1 class="panel-title text-center">Choisissez vos objets</h1>
+        <h1 class="panel-title text-center"><a href="/room" class="pull-left"><</a>Choisissez vos objets</h1>
+
     </div>
     <div class="row mainZone">
         {% for category in categories %}
             <div class="col-sm-3 text-center">
-                <a href="{{ path('object_index', {'id':category.id}) }}" class="thumbnail thumbnail1">{{ category.name }}</a>
+                <a href="{{ path('user_object_category_index', {'moveOutRoom':moveOutRoom.id, 'category':category.id} ) }}" class="thumbnail thumbnail1">{{ category.name }}</a>
             </div>
         {% endfor %}
     </div>
