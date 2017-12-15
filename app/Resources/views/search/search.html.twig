@@ -5,7 +5,7 @@
     <form>
         <input id="appbundle_room_object" autocomplete="off" type="text" name="search" placeholder="Recherche">
     </form>
-    <ul id="autocomplete"></ul>
+    <ul id="autocomplete">dqsd</ul>
 
 {% endblock %}
 
@@ -17,10 +17,31 @@
     <script>
         $("#appbundle_room_object").keyup(function () {
             const inputObject = $(this).val().toLowerCase();
-            if (inputObject.length >= 2) {
+            if (inputObject.length >= 1) {
                 $.ajax({
                     type: "POST",
                     url: "/search/objects/list/" + inputObject,
+                    dataType: 'json',
+                    timeout: 3000,
+                    success: function (response) {
+                        const objects = JSON.parse(response.data);
+                        let html = '';
+                        for (object of objects) {
+                            html += `<div class="col-sm-3 text-center">
+                                    <a href="add/item/session/${object.id}" class="thumbnail thumbnail1">${object.name}</a>
+                                    </div>`;
+
+                        }
+                        $('#autocomplete').html(html);
+                    },
+                    error: function () {
+                        $('#autocomplete').text('Ajax call error');
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "/search/objects/all/",
                     dataType: 'json',
                     timeout: 3000,
                     success: function (response) {
