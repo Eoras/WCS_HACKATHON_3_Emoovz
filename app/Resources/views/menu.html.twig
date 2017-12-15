@@ -10,13 +10,13 @@
         <a href="{{ path('user_object_index', {'id':moveOutRoom.id}) }}">
             <div class="btn btn-block btn-lg inputFormRoomList">
                 <div class="pull-left">
+                    <span class=badge>{{ moveOutRoom.moveOutRoomObjects|length}}</span>
                     {{ moveOutRoom.room.name }}
                 </div>
                 {{ form_start(delete_forms[moveOutRoom.id]) }}
                 <button type="submit" class="btn btn-danger pull-right">
                     <span class="fa fa-trash-o"></span>
                 </button>
-                {{ moveOutRoom.moveOutRoomObjects|length}}
                 {{ form_end(delete_forms[moveOutRoom.id]) }}
             </div>
         </a>

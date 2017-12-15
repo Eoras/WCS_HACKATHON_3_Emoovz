@@ -8,6 +8,10 @@ $violet: #4C448F;
 }
 
 .menu {
+  .badge {
+    background-color: $rose;
+    margin-right: 5px;
+  }
   .inputFormRoomList {
     height: 50px;
     font-family: 'Alegreya Sans', sans-serif;
