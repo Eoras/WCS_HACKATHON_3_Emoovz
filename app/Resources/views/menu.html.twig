@@ -21,7 +21,7 @@
             </div>
         </a>
 
-        <ul>
+        <ul><br/>
             {% for object in moveOutRoom.moveOutRoomObjects %}
                 <li class="liste">
                     <a href="{{ path('move_out_room_object_delete', {'id':object.id }) }}">
@@ -30,6 +30,7 @@
                     <span class="text">{{ object.object.name }}</span>
                 </li>
             {% endfor %}
+            <br>
         </ul>
 
     {% endfor %}
