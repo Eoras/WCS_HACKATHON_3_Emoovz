@@ -5,8 +5,9 @@
         <h1 class="panel-title text-center"><a href="/room" class="pull-left fleche"><</a>Choisissez vos objets</h1>
     </div>
     <form>
-        <input id="appbundle_room_object" autocomplete="off" type="text" name="search" placeholder="Recherche" class="form-group">
+        <input id="appbundle_room_object" autocomplete="off" type="text" name="search" placeholder="Recherche" class="form-control">
     </form>
+    <hr/>
     <div class="row mainZone" id="autocomplete">
         {% for category in categories %}
             <div class="col-sm-3 text-center">

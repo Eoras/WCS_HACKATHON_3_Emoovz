@@ -14,11 +14,16 @@ $fa-font-path: "~font-awesome/fonts";
 $rose: #C23867;
 $violet: #4C448F;
 
-.jumbotron {
+.entreeSite {
   margin-top: 5vh;
-  background-color: rgba(76, 68, 143, 0.3);
+  height: 500px;
+  background: center;
+  background-size: cover;
+  opacity: 0.7;
   .mainTitle {
-    color: $rose;
+    padding-top: 200px;
+    color: white;
+    font-size: calc(3vw + 10px);
   }
 }
 
