@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <h1 class="panel-title text-center">Choisissez vos pièces</h1>
+    </div>
+    <div class="row mainZone">
+        {% for panelRoom in panelRooms %}
+            <div class="col-sm-3">
+                <a href="#" class="thumbnail thumbnail1">{{ panelRoom.name }}</a>
+            </div>
+        {% endfor %}
+        <a href="{{ path('room-user_new') }}" class="thumbnail">Autres</a>
+    </div>
+{% endblock %}

@@ -1,10 +1,19 @@
 .mainZone {
-
   .thumbnail1 {
     height: 200px;
-    background: purple;
     color: white;
-    font-size: calc(3vw + 10px);
+    text-shadow: 2px 2px 8px black;
+    font-size: calc(1.5vw + 10px);
+    background: center;
+    background-size: cover;
+    background-color: rgba(194, 56, 103, 0.8);
+    opacity: 0.5;
+    line-Height: 1;
+    padding-top: 70px;
+  }
+  .thumbnail1:hover {
+    text-decoration: none;
+    opacity: 1;
   }
 
 }

@@ -6,8 +6,12 @@
     </div>
     <div class="row mainZone">
         {% for room in rooms %}
-            <div class="col-sm-3 text-center">
-                <a href="{{ path('room_adding', { 'id':room.id } ) }}" class="thumbnail thumbnail1">{{ room.name }}</a>
+            <div class="col-sm-3 text-center maDivFlex">
+                <a href="{{ path('room_adding', { 'id':room.id } ) }}"
+                   class="thumbnail thumbnail1"
+                   style="background-image: url( {{asset( 'picturesRooms/' ~ room.pictureName) }})">
+                {{ room.name }}
+                </a>
             </div>
         {% endfor %}
     </div>

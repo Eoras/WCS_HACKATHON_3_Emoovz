@@ -37,6 +37,12 @@ class Category
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pictureName", type="string", length=255)
+     */
+    private $pictureName;
 
     /**
      * Get id
@@ -112,5 +118,29 @@ class Category
     public function getObjects()
     {
         return $this->objects;
+    }
+
+    /**
+     * Set pictureName
+     *
+     * @param string $pictureName
+     *
+     * @return Category
+     */
+    public function setPictureName($pictureName)
+    {
+        $this->pictureName = $pictureName;
+
+        return $this;
+    }
+
+    /**
+     * Get pictureName
+     *
+     * @return string
+     */
+    public function getPictureName()
+    {
+        return $this->pictureName;
     }
 }

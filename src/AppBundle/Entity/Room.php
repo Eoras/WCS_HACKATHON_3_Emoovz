@@ -38,6 +38,13 @@ class Room
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="pictureName", type="string", length=255)
+     */
+    private $pictureName;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -112,5 +119,29 @@ class Room
     public function getMoveOutRooms()
     {
         return $this->moveOutRooms;
+    }
+
+    /**
+     * Set pictureName
+     *
+     * @param string $pictureName
+     *
+     * @return Room
+     */
+    public function setPictureName($pictureName)
+    {
+        $this->pictureName = $pictureName;
+
+        return $this;
+    }
+
+    /**
+     * Get pictureName
+     *
+     * @return string
+     */
+    public function getPictureName()
+    {
+        return $this->pictureName;
     }
 }

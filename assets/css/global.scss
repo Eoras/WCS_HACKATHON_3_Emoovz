@@ -11,23 +11,40 @@ $fa-font-path: "~font-awesome/fonts";
   border-radius: 0!important;
   font-family: 'Alegreya Sans', sans-serif;
 }
+$rose: #C23867;
+$violet: #4C448F;
+
+.jumbotron {
+  margin-top: 5vh;
+  background-color: rgba(76, 68, 143, 0.3);
+  .mainTitle {
+    color: $rose;
+  }
+}
 
 .inputForm {
   height: 120px;
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 3em;
+  color: $rose;
 }
 
 .inputForm:focus {
-  border: solid 2px #4C448F;
+  border: solid 2px $violet;
 }
 
 .btnForm {
-  background-color: #4C448F;
+  background-color: $violet;
   font-size: 2em;
   color: white;
 }
+
 .btnForm:hover {
   color: white;
+  background-color: $rose;
 }
 
+.fleche:hover {
+  text-decoration: none;
+  color: $violet;
+}

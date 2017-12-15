@@ -20,21 +20,22 @@ class RoomFixtures extends Fixture implements OrderedFixtureInterface
     {
 
         $rooms = [
-            "Entrée",
-            "Chambre",
-            "Cuisine",
-            "Salon",
-            "Salle à manger",
-            "Salle de Bain",
-            "Toilettes",
-            "Garage",
-            "Cave",
-            "Autre",
+            0 => ["Entrée", "entree.jpg"],
+            1 => ["Chambre", "chambre.jpg"],
+            2 => ["Cuisine", "cuisine.jpg"],
+            3 => ["Salon", "salon.jpg"],
+            4 => ["Salle à manger", "salle_a_manger.jpg"],
+            5 => ["Salle de Bain", "salle_de_bain.jpg"],
+            6 => ["Toilettes", "toilettes.jpg"],
+            7 => ["Garage", "garage.jpg"],
+            8 => ["Cave", "cave.jpg"],
+            9 => ["Autre", "autre.jpg"],
         ];
 
-        foreach ($rooms as $name) {
+        foreach ($rooms as $roomTab) {
             $room = new Room();
-            $room->setName($name);
+            $room->setName($roomTab[0]);
+            $room->setPictureName($roomTab[1]);
             $manager->persist($room);
         }
 
