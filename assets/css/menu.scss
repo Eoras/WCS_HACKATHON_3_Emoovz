@@ -33,4 +33,24 @@ $violet: #4C448F;
     color: white;
     border: none;
   }
+
+  ul {
+    margin-bottom: 5px;
+    list-style-type: none;
+  }
+
+  .liste {
+    margin-left: 5%;
+    a {
+      .fa {
+        color: $rose;
+        margin-right: 10px;
+      }
+    }
+    .text {
+      font-family: 'Alegreya Sans', sans-serif;
+      font-size: calc(0.7vh + 10px);
+    }
+  }
+
 }

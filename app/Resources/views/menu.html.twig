@@ -10,7 +10,7 @@
         <a href="{{ path('user_object_index', {'id':moveOutRoom.id}) }}">
             <div class="btn btn-block btn-lg inputFormRoomList">
                 <div class="pull-left">
-                    <span class=badge>{{ moveOutRoom.moveOutRoomObjects|length}}</span>
+                    <span class=badge>{{ moveOutRoom.moveOutRoomObjects|length }}</span>
                     {{ moveOutRoom.room.name }}
                 </div>
                 {{ form_start(delete_forms[moveOutRoom.id]) }}
@@ -20,11 +20,17 @@
                 {{ form_end(delete_forms[moveOutRoom.id]) }}
             </div>
         </a>
+
+        <ul>
+            {% for object in moveOutRoom.moveOutRoomObjects %}
+                <li class="liste">
+                    <a href="{{ path('move_out_room_object_delete', {'id':object.id }) }}">
+                        <span class="fa fa-trash-o"></span>
+                    </a>
+                    <span class="text">{{ object.object.name }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+
     {% endfor %}
-            <ul>
-                {% for object in moveOutRoom.moveOutRoomObjects %}
-                    <li>{{ object.object.name }}<a href="{{ path('move_out_room_object_delete', {'id':object.id }) }}"><span class="fa fa-remove"></span></a></li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
 </div>

@@ -22,7 +22,7 @@ class ObjectFixtures extends Fixture implements OrderedFixtureInterface
     {
 
         $objects = [
-            0 => ["Grand carton (55 x 35 x 30 cm", "Petit carton (35 x 27,5 x 30 cm)"],
+            0 => ["Grand carton (55 x 35 x 30 cm)", "Petit carton (35 x 27,5 x 30 cm)"],
             1 => ["Canapé 2 places", "Canapé 3 places", "Canapé d'angle"],
             2 => ["Chaise", "Pouf", "Tabouret", "Fauteuil"],
             3 => ["Guéridon / Table d'appoint", "Table 2-4 personnes", "Table 6-8 personnes", "Table monastère en chêne", "Table Pliante", "Table Ronde"],
