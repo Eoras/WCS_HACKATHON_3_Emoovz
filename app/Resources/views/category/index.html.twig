@@ -3,13 +3,70 @@
 {% block body %}
     <div class="jumbotron">
         <h1 class="panel-title text-center"><a href="/room" class="pull-left"><</a>Choisissez vos objets</h1>
-
+        <form>
+            <input id="appbundle_room_object" autocomplete="off" type="text" name="search" placeholder="Recherche">
+        </form>
     </div>
-    <div class="row mainZone">
+    <div class="row mainZone" id="autocomplete">
         {% for category in categories %}
             <div class="col-sm-3 text-center">
                 <a href="{{ path('user_object_category_index', {'moveOutRoom':moveOutRoom.id, 'category':category.id} ) }}" class="thumbnail thumbnail1">{{ category.name }}</a>
             </div>
         {% endfor %}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('build/app.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $("#appbundle_room_object").keyup(function () {
+            const inputObject = $(this).val().toLowerCase();
+            if (inputObject.length >= 1) {
+                $.ajax({
+                    type: "POST",
+                    url: "/search/objects/list/" + inputObject,
+                    dataType: 'json',
+                    timeout: 3000,
+                    success: function (response) {
+                        const objects = JSON.parse(response.data);
+                        let html = '';
+                        for (object of objects) {
+                            html += `<div class="col-sm-3 text-center">
+                                    <a href="/new/{{ moveOutRoom.id }}/${object.id}" class="thumbnail thumbnail1">${object.name}</a>
+                                    </div>`;
+
+                        }
+                        $('#autocomplete').html(html);
+                    },
+                    error: function () {
+                        $('#autocomplete').text('Ajax call error');
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "/search/objects/all/",
+                    dataType: 'json',
+                    timeout: 3000,
+                    success: function (response) {
+                        const objects = JSON.parse(response.data);
+                        let html = '';
+                        for (object of objects) {
+                            html += `<div class="col-sm-3 text-center">
+                                    <a href="TODO/${object.id}" class="thumbnail thumbnail1">${object.name}</a>
+                                    </div>`;
+
+                        }
+                        $('#autocomplete').html(html);
+                    },
+                    error: function () {
+                        $('#autocomplete').text('Ajax call error');
+                    }
+                });
+            }
+        });
+    </script>
+
 {% endblock %}
