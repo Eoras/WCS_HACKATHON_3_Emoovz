@@ -15,7 +15,7 @@ class ObjectRepository extends EntityRepository
     public function getObjectLike($name)
     {
         $qb = $this->createQueryBuilder('o')
-            ->select('o.name')
+            ->select('o.name', 'o.id')
             ->where('o.name LIKE :name')
             ->setParameter('name', $name.'%')
             ->getQuery();

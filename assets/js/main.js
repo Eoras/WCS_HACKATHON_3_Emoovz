@@ -15,7 +15,7 @@ $(document).ready(function () {
                     const objects = JSON.parse(response.data);
                     let html='';
                     for (object of objects) {
-                        html += `<li>${object.name}</li>`;
+                        html += `<li data-id="${object.id}">${object.name}</li>`;
                     }
                     $('#autocomplete').html(html);
                 },
