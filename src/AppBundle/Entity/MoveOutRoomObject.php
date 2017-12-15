@@ -66,14 +66,15 @@ class MoveOutRoomObject
         return $this->moveOutRoom;
     }
 
+
     /**
      * Set object
      *
-     * @param \AppBundle\Entity\MoveOutRoom $object
+     * @param \AppBundle\Entity\Object $object
      *
      * @return MoveOutRoomObject
      */
-    public function setObject(\AppBundle\Entity\MoveOutRoom $object = null)
+    public function setObject(\AppBundle\Entity\Object $object = null)
     {
         $this->object = $object;
 
@@ -83,7 +84,7 @@ class MoveOutRoomObject
     /**
      * Get object
      *
-     * @return \AppBundle\Entity\MoveOutRoom
+     * @return \AppBundle\Entity\Object
      */
     public function getObject()
     {
