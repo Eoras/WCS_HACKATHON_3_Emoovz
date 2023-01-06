@@ -6,7 +6,7 @@
 **Emoovz**
 - Charlotte PRIEUR
 - Paul DOS SANTOS
-- Loann MEIGNANT
+- Loann
 - Pierre LAMBERT
 - Tibault DECHERIT
 
